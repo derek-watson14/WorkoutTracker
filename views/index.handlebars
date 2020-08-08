@@ -1,0 +1,50 @@
+  <div class="container-fluid">
+    <div class="row mb-4">
+      <div class="col-sm">
+        <h3 class="mb-3">View Workouts</h3>
+        <div class="row">
+          <div class="col-sm">
+            <div class="card mb-3" style="width: 100%">
+              <div class="card-body">
+                <h5 class="card-title">Workout 2</h5>
+                <h6 class="card-subtitle mb-2 text-muted">3 exercises</h6>
+                <p class="card-text">Workout added on 8/6/2020</p>
+              </div>  
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center">Exercise 1<button class="btn btn-info">View</button></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">Exercise 2<button class="btn btn-info">View</button></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">Exercise 3<button class="btn btn-info">View</button></li>
+              </ul>
+              <div class="card-body">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#addExerciseModal">Add exercise</button>
+                <button class="btn btn-danger">Delete workout</button>
+              </div>
+            </div>
+          </div>
+          {{> addExercise}}
+          <div class="col-sm">
+            <div class="card mb-3" style="width: 100%;">
+              <div class="card-body">
+                <h5 class="card-title">Recent workouts</h5>
+                <p class="card-text">Last workout on 8/6/2020</p>
+              </div>  
+              <ul id="recentWorkouts" class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center">Workout 1 <button class="btn btn-info">View</button></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">Workout 2 <button class="btn btn-info">View</button></li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">Workout 3 <button class="btn btn-info">View</button></li>
+              </ul>
+              <div class="card-body">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#addWorkoutModal">Add workout</button>
+              </div>
+            </div>
+          </div>
+          {{> addWorkout}}
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm" id="statistics">
+        <h3>Workout Statistics: <span>Workout 2</span></h3>
+      </div>
+    </div>
+  </div>
