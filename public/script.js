@@ -4,23 +4,9 @@ const postNewWorkout = (workoutName) => {
   });
 };
 
-const postExerciseData = (exerciseObj, workoutid) => {
+const postNewExercise = (exerciseObj, workoutid) => {
   $.post("/api/exercise/" + workoutid, exerciseObj, () => {
     getWorkoutData(workoutid);
-  });
-};
-
-const getWorkoutData = (id) => {
-  $("#newExercise").data("id", id);
-  $.get("/api/" + id, (data) => {
-    console.log(data);
-    let dataObj = {
-      name: data[0].name,
-      day: data[0].day.slice(0, 10),
-      exercises: data[0].exercises,
-    };
-    console.log(dataObj);
-    renderWorkout(dataObj);
   });
 };
 
@@ -42,19 +28,37 @@ async function getWorkout(id) {
 
 async function displayRecentWorkouts() {
   const recentWorkouts = $("#recentWorkouts");
+  const lastDate = $("#lastWorkoutDate");
+  const recentCount = $("#recentCount");
   try {
     let workoutLis = "";
     const workouts = await getRecentWorkouts();
-    workouts.forEach((workout) => {
-      workoutLis += `
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          ${workout.name}
-          <button data-workoutId=${workout._id} class="btn btn-info view-workout">View</button>
-        </li>`;
-    });
-    recentWorkouts.html(workoutLis);
+    if (workouts.length > 0) {
+      lastDate.text(`Last workout on ${workouts[0].date.slice(0, 10)}`);
+      recentCount.text(
+        workouts.length > 1
+          ? `Displaying ${workouts.length} most recent workouts`
+          : "Displaying most recent workout"
+      );
+      workouts.forEach((workout) => {
+        workoutLis += `
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            ${workout.name}
+            <button data-workoutId=${workout._id} class="btn btn-info view-workout">View</button>
+          </li>`;
+      });
+      recentWorkouts.html(workoutLis);
+    } else {
+      recentWorkouts.html(`
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span class="alert alert-secondary m-0 w-100" role="alert">
+          No workouts to display
+        </span>
+      </li>
+    `);
+    }
   } catch (error) {
-    console.log(`Status ${error.status} `, error.statusText);
+    console.log(error);
     recentWorkouts.html(`
       <li class="list-group-item d-flex justify-content-between align-items-center">
         <span class="alert alert-danger m-0 w-100" role="alert">
@@ -65,11 +69,36 @@ async function displayRecentWorkouts() {
   }
 }
 
-// TODO: display workouts to the page
 async function displaySingleWorkout(id) {
+  const titleH5 = $("#workoutTitle");
+  const countH6 = $("#exerciseCount");
+  const dateP = $("#workoutDate");
+  const exercisesUl = $("#workoutExercises");
+  let exerciseLis;
   try {
     const workout = await getWorkout(id);
     console.log(workout);
+    titleH5.text(workout.name);
+    countH6.text(`${workout.exercises.length} exercises`);
+    dateP.text(`Workout added ${workout.date.slice(0, 10)}`);
+    if (workout.exercises.length > 0) {
+      workout.exercises.forEach((exercise) => {
+        exerciseLis += `
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            ${exercise.name}
+            <button data-workoutId=${exercise._id} class="btn btn-info view-workout">View</button>
+          </li>`;
+      });
+      exercisesUl.html(exerciseLis);
+    } else {
+      exercisesUl.html(`
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span class="alert alert-secondary m-0 w-100" role="alert">
+          This workout contains no exercises
+        </span>
+      </li>
+      `);
+    }
   } catch (error) {
     console.log(error);
   }
@@ -88,6 +117,7 @@ $("#addWorkoutForm").submit(function (event) {
     console.log("name", $("#noWorkoutNameAlert"));
     postNewWorkout(name);
     $("#addWorkoutModal").modal("toggle");
+    location.reload();
   } else {
     console.log("no name", $("#noWorkoutNameAlert"));
     $("#noWorkoutNameAlert").removeClass("d-none");

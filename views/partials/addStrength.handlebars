@@ -1,0 +1,51 @@
+<div class="modal fade" id="addStrengthModal" tabindex="-1" role="dialog" aria-labelledby="addExerciseLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addExerciseLabel">New strength exercise</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="addStrengthForm">
+          <div class="form-group">
+            <label for="exerciseName" class="col-form-label">Exercise name:</label>
+            <input type="text" class="form-control" id="exerciseName" maxlength="25">
+            <div class="invalid-feedback">
+              Please provide a valid name.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="weight" class="col-form-label">Weight in kilograms:</label>
+            <input type="number" class="form-control" id="weight">
+            <div class="invalid-feedback">
+              Please provide a valid weight.
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col form-group">
+              <label for="sets" class="col-form-label">Number of sets:</label>
+              <input type="number" class="form-control" id="sets">
+              <div class="invalid-feedback">
+                Please select a number of sets.
+              </div>
+            </div>
+            <div class="col form-group">
+              <label for="reps" class="col-form-label">Reps per set:</label>
+              <input type="number" class="form-control" id="reps">
+              <div class="invalid-feedback">
+                Please select number of reps per set
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" form="addStrengthForm" class="btn btn-success">Add Exercise</button>
+        <button type="submit" form="addStrengthForm" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#addExerciseModal">Back</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

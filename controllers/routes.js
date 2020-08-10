@@ -24,7 +24,7 @@ router.post("/api/exercise/:workoutid", (req, res) => {
 // Get most recent 5 workouts
 router.get("/api/workout", (req, res) => {
   db.Workout.find({})
-    .sort({ day: -1 })
+    .sort({ timestamp: -1 })
     .limit(5)
     .populate("exercises")
     .then((dbWorkout) => {
@@ -38,10 +38,11 @@ router.get("/api/workout", (req, res) => {
 
 // Get specific workout by id
 router.get("/api/workout/:id", (req, res) => {
-  db.Workout.find({ _id: req.params.id })
+  db.Workout.findOne({ _id: req.params.id })
+    .lean()
     .populate("exercises")
     .then((dbWorkout) => {
-      res.json(dbWorkout);
+      res.json({ ...dbWorkout });
     })
     .catch(({ message }) => {
       console.log(message);
@@ -51,7 +52,11 @@ router.get("/api/workout/:id", (req, res) => {
 
 // Create new workout
 router.post("/api/workout", (req, res) => {
-  db.Workout.create({ name: req.body.name, day: moment().format("M/D/YYYY") })
+  db.Workout.create({
+    name: req.body.name,
+    date: moment().format("M/D/YYYY"),
+    timestamp: moment(),
+  })
     .then((dbWorkout) => {
       res.json(dbWorkout);
     })
@@ -63,21 +68,7 @@ router.post("/api/workout", (req, res) => {
 
 // ! HTML routes
 router.get("/", (req, res) => {
-  db.Workout.find({})
-    .sort({ day: -1 })
-    .limit(5)
-    .lean()
-    .then((data) => {
-      console.log(data);
-      data.map(
-        (element) => (element.day = moment(element.day).format("MMMM Do YYYY"))
-      );
-      res.render("index", { workout: data });
-    })
-    .catch((err) => {
-      console.log(err);
-      res.status(500);
-    });
+  res.render("index");
 });
 
 module.exports = router;

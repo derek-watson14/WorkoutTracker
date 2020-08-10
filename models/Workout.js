@@ -6,9 +6,11 @@ const WorkoutSchema = new Schema({
   name: {
     type: String,
   },
-  day: {
+  date: {
+    type: String,
+  },
+  timestamp: {
     type: Date,
-    unique: false,
   },
   exercises: [
     {

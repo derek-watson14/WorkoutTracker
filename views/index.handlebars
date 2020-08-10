@@ -6,14 +6,16 @@
           <div class="col-sm">
             <div class="card mb-3" style="width: 100%">
               <div class="card-body">
-                <h5 class="card-title">Workout 2</h5>
-                <h6 class="card-subtitle mb-2 text-muted">3 exercises</h6>
-                <p class="card-text">Workout added on 8/6/2020</p>
+                <h5 id="workoutTitle" class="card-title">View a workout</h5>
+                <h6 id="exerciseCount" class="card-subtitle mb-2 text-muted"></h6>
+                <p id="workoutDate" class="card-text"></p>
               </div>  
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item d-flex justify-content-between align-items-center">Exercise 1<button class="btn btn-info">View</button></li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">Exercise 2<button class="btn btn-info">View</button></li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">Exercise 3<button class="btn btn-info">View</button></li>
+              <ul id="workoutExercises" class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <span class="alert alert-secondary m-0 w-100" role="alert">
+                    No workout selected
+                  </span>
+                </li>
               </ul>
               <div class="card-body">
                 <button class="btn btn-primary" data-toggle="modal" data-target="#addExerciseModal">Add exercise</button>
@@ -22,16 +24,16 @@
             </div>
           </div>
           {{> addExercise}}
+          {{> addCardio}}
+          {{> addStrength}}
           <div class="col-sm">
             <div class="card mb-3" style="width: 100%;">
               <div class="card-body">
                 <h5 class="card-title">Recent workouts</h5>
-                <p class="card-text">Last workout on 8/6/2020</p>
+                <h6 id="recentCount" class="card-subtitle mb-2 text-muted"></h6>
+                <p id="lastWorkoutDate" class="card-text"></p>
               </div>  
               <ul id="recentWorkouts" class="list-group list-group-flush">
-                <li class="list-group-item d-flex justify-content-between align-items-center">Workout 1 <button class="btn btn-info">View</button></li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">Workout 2 <button class="btn btn-info">View</button></li>
-                <li class="list-group-item d-flex justify-content-between align-items-center">Workout 3 <button class="btn btn-info">View</button></li>
               </ul>
               <div class="card-body">
                 <button class="btn btn-primary" data-toggle="modal" data-target="#addWorkoutModal">Add workout</button>

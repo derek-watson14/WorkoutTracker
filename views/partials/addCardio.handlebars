@@ -1,0 +1,54 @@
+<div class="modal fade" id="addCardioModal" tabindex="-1" role="dialog" aria-labelledby="addExerciseLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addExerciseLabel">New cardio exercise</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="addCardioForm">
+          <div class="form-group">
+            <label for="name" class="col-form-label">Exercise name:</label>
+            <input type="text" class="form-control" id="name" maxlength="25">
+            <div class="invalid-feedback">
+              Please provide a valid city.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="cardioType">Cardio type:</label>
+            <select class="form-control" id="cardioType">
+              <option value="" disabled selected>Select type</option>
+              <option value="run">Run</option>
+              <option value="bike">Bike</option>
+              <option value="bike">Swim</option>
+            </select>
+            <div class="invalid-feedback">
+              Please provide a valid city.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="distance" class="col-form-label">Distance in kilometers:</label>
+            <input type="number" class="form-control" id="distance">
+            <div class="invalid-feedback">
+              Please provide a valid city.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="duration" class="col-form-label">Duration in minutes:</label>
+            <input type="number" class="form-control" id="duration">
+            <div class="invalid-feedback">
+              Please provide a valid city.
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" form="addCardioForm" class="btn btn-success">Add Exercise</button>
+        <button type="submit" form="addStrengthForm" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#addExerciseModal">Back</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
