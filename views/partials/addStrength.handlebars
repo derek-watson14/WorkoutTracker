@@ -8,35 +8,24 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="addStrengthForm">
+        <form id="addStrengthForm" class="needs-validation">
+          <input type="hidden" id="type" value="cardio">
           <div class="form-group">
-            <label for="exerciseName" class="col-form-label">Exercise name:</label>
-            <input type="text" class="form-control" id="exerciseName" maxlength="25">
-            <div class="invalid-feedback">
-              Please provide a valid name.
-            </div>
+            <label for="stengthExerciseName" class="col-form-label">Exercise name:</label>
+            <input type="text" class="form-control" id="stengthExerciseName" maxlength="25" required>
           </div>
           <div class="form-group">
             <label for="weight" class="col-form-label">Weight in kilograms:</label>
-            <input type="number" class="form-control" id="weight">
-            <div class="invalid-feedback">
-              Please provide a valid weight.
-            </div>
+            <input type="number" class="form-control" id="weight" required>
           </div>
           <div class="form-row">
             <div class="col form-group">
               <label for="sets" class="col-form-label">Number of sets:</label>
-              <input type="number" class="form-control" id="sets">
-              <div class="invalid-feedback">
-                Please select a number of sets.
-              </div>
+              <input type="number" class="form-control" id="sets" required>
             </div>
             <div class="col form-group">
               <label for="reps" class="col-form-label">Reps per set:</label>
-              <input type="number" class="form-control" id="reps">
-              <div class="invalid-feedback">
-                Please select number of reps per set
-              </div>
+              <input type="number" class="form-control" id="reps" required>
             </div>
           </div>
         </form>

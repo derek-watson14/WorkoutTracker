@@ -3,12 +3,13 @@
       <div class="col-sm">
         <h3 class="mb-3">View Workouts</h3>
         <div class="row">
-          <div class="col-sm">
+          <div class="col-md">
             <div class="card mb-3" style="width: 100%">
               <div class="card-body">
                 <h5 id="workoutTitle" class="card-title">View a workout</h5>
                 <h6 id="exerciseCount" class="card-subtitle mb-2 text-muted"></h6>
                 <p id="workoutDate" class="card-text"></p>
+                <span id="workoutId" class="d-none"></span>
               </div>  
               <ul id="workoutExercises" class="list-group list-group-flush">
                 <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -18,15 +19,15 @@
                 </li>
               </ul>
               <div class="card-body">
-                <button class="btn btn-primary" data-toggle="modal" data-target="#addExerciseModal">Add exercise</button>
-                <button class="btn btn-danger">Delete workout</button>
+                <button id="openExerciseModal" class="btn btn-primary d-none" data-toggle="modal" data-target="#addExerciseModal">Add exercise</button>
+                <button id="deleteWorkout" class="btn btn-danger d-none">Delete Workout</button>
               </div>
             </div>
           </div>
           {{> addExercise}}
           {{> addCardio}}
           {{> addStrength}}
-          <div class="col-sm">
+          <div class="col-md">
             <div class="card mb-3" style="width: 100%;">
               <div class="card-body">
                 <h5 class="card-title">Recent workouts</h5>
@@ -42,11 +43,6 @@
           </div>
           {{> addWorkout}}
         </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm" id="statistics">
-        <h3>Workout Statistics: <span>Workout 2</span></h3>
       </div>
     </div>
   </div>

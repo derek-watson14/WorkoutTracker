@@ -8,45 +8,34 @@
         </button>
       </div>
       <div class="modal-body">
-        <form id="addCardioForm">
+        <form id="addCardioForm" class="needs-validation">
+          <input type="hidden" id="type" value="cardio">
           <div class="form-group">
-            <label for="name" class="col-form-label">Exercise name:</label>
-            <input type="text" class="form-control" id="name" maxlength="25">
-            <div class="invalid-feedback">
-              Please provide a valid city.
-            </div>
+            <label for="cardioExerciseName" class="col-form-label">Exercise name:</label>
+            <input type="text" class="form-control" id="cardioExerciseName" maxlength="25" required>
           </div>
           <div class="form-group">
             <label for="cardioType">Cardio type:</label>
-            <select class="form-control" id="cardioType">
+            <select class="form-control" id="cardioType" required>
               <option value="" disabled selected>Select type</option>
               <option value="run">Run</option>
               <option value="bike">Bike</option>
               <option value="bike">Swim</option>
             </select>
-            <div class="invalid-feedback">
-              Please provide a valid city.
-            </div>
           </div>
           <div class="form-group">
             <label for="distance" class="col-form-label">Distance in kilometers:</label>
-            <input type="number" class="form-control" id="distance">
-            <div class="invalid-feedback">
-              Please provide a valid city.
-            </div>
+            <input type="number" class="form-control" id="distance" required>
           </div>
           <div class="form-group">
             <label for="duration" class="col-form-label">Duration in minutes:</label>
-            <input type="number" class="form-control" id="duration">
-            <div class="invalid-feedback">
-              Please provide a valid city.
-            </div>
+            <input type="number" class="form-control" id="duration" required>
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="submit" form="addCardioForm" class="btn btn-success">Add Exercise</button>
-        <button type="submit" form="addStrengthForm" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#addExerciseModal">Back</button>
+        <button type="submit" form="addCardioForm" class="btn btn-secondary" data-dismiss="modal" data-toggle="modal" data-target="#addExerciseModal">Back</button>
         <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
       </div>
     </div>

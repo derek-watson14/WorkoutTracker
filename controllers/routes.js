@@ -66,6 +66,33 @@ router.post("/api/workout", (req, res) => {
     });
 });
 
+// Delete workout
+router.delete("/api/workout/:id", (req, res) => {
+  db.Workout.deleteOne({
+    _id: req.params.id,
+  })
+    .then((deletion) => {
+      res.json(deletion);
+    })
+    .catch(({ message }) => {
+      console.log(message);
+      res.status(500).end();
+    });
+});
+
+router.delete("/api/exercise/:workoutid", (req, res) => {
+  db.Exercise.deleteMany({
+    workoutId: req.params.workoutid,
+  })
+    .then((deletion) => {
+      res.json(deletion);
+    })
+    .catch(({ message }) => {
+      console.log(message);
+      res.status(500).end();
+    });
+});
+
 // ! HTML routes
 router.get("/", (req, res) => {
   res.render("index");
