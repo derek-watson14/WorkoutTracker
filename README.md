@@ -13,6 +13,10 @@
   <br />
   <br />
   
+  <a href="https://djw-workout-tracker117.herokuapp.com/">
+    View deployment
+  </a>
+  ·
   <a href="https://github.com/derek-watson14/WorkoutTracker">
     View code
   </a>
@@ -47,10 +51,13 @@
   ### Built With
   
   * HTML
-  * CSS
+  * Bootstrap
   * JavaScript
   * jQuery
   * Node.js
+  * Express
+  * MongoDB
+  * Mongoose
 
   <!-- CONTRIBUTING -->
 
